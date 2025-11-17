@@ -159,7 +159,6 @@ const SalesReport = () => {
                     N° Ventas {getSortIcon('sales_count')}
                   </th>
                   <th>Promedio por Venta</th>
-                  <th>% del Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -167,9 +166,7 @@ const SalesReport = () => {
                   const avgPerSale = item.sales_count > 0
                     ? parseFloat(item.total_sales) / parseInt(item.sales_count)
                     : 0;
-                  const percentage = totals.totalSales > 0
-                    ? (parseFloat(item.total_sales || 0) / totals.totalSales * 100).toFixed(1)
-                    : 0;
+                
 
                   return (
                     <tr key={item.customer_id}>
@@ -191,15 +188,6 @@ const SalesReport = () => {
                       <td>
                         {formatCurrency(avgPerSale)}
                       </td>
-                      <td>
-                        <div className="percentage-bar">
-                          <div
-                            className="percentage-fill"
-                            style={{ width: `${percentage}%` }}
-                          ></div>
-                          <span className="percentage-text">{percentage}%</span>
-                        </div>
-                      </td>
                     </tr>
                   );
                 })}
@@ -215,7 +203,6 @@ const SalesReport = () => {
                       : '$0.00'
                     }
                   </td>
-                  <td className="tfoot-value">100%</td>
                 </tr>
               </tfoot>
             </table>

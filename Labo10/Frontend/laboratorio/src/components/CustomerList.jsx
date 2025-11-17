@@ -37,7 +37,7 @@ const CustomerList = () => {
   if (error) {
     return (
       <div className="error-container">
-        <h3>⚠️ Error</h3>
+        <h3>Error</h3>
         <p>{error}</p>
         <button onClick={fetchCustomers} className="retry-button">
           Reintentar

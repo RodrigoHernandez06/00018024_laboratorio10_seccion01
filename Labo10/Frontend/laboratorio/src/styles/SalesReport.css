@@ -171,32 +171,6 @@
   font-size: 14px;
 }
 
-/* Barra de porcentaje */
-.percentage-bar {
-  position: relative;
-  background-color: #e9ecef;
-  height: 24px;
-  border-radius: 12px;
-  overflow: hidden;
-  min-width: 100px;
-}
-
-.percentage-fill {
-  background-color: #007bff;
-  height: 100%;
-  transition: width 0.3s;
-}
-
-.percentage-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-  font-size: 12px;
-  color: #333;
-}
-
 .report-table tfoot tr {
   background-color: #f8f9fa;
   font-weight: bold;
@@ -279,7 +253,6 @@
   margin: 0 0 20px 0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .report-header {
     flex-direction: column;
