@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken"
 import userRoutes from "./routes/user.routes.js"
 import verifyToken from "./middlewares/verifyToken.js"
 import { pool } from "./database.js"
-import { signIn } from "./controllers/signin.controller.js"
+import { signIn } from "./controllers/users/signin.controller.js"
 import { JWT_SECRET } from './keys.js'
 
 const app = express()

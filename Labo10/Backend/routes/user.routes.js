@@ -1,15 +1,14 @@
-// routes/user.routes.js
 import { Router } from 'express'
-import { displayHome } from '../controllers/home.controller.js'
-import { getUsers } from '../controllers/getUsers.controller.js'
-import { getUserById } from '../controllers/getUserById.controller.js'
-import { createUser } from '../controllers/createUser.controller.js'
-import { updateUser } from '../controllers/updateUser.controller.js'
-import { deleteUser } from '../controllers/deleteUser.controller.js'
+import { displayHome } from '../controllers/users/home.controller.js'
+import { getUsers } from '../controllers/users/getUsers.controller.js'
+import { getUserById } from '../controllers/users/getUserById.controller.js'
+import { createUser } from '../controllers/users/createUser.controller.js'
+import { updateUser } from '../controllers/users/updateUser.controller.js'
+import { deleteUser } from '../controllers/users/deleteUser.controller.js'
 import verifyToken from '../middlewares/verifyToken.js'
-import { signIn } from '../controllers/signin.controller.js'
+import { signIn } from '../controllers/users/signin.controller.js'
 
-const router = Router()
+const router = Router() 
 
 router.get('/', displayHome)
 router.post('/signin', signIn)

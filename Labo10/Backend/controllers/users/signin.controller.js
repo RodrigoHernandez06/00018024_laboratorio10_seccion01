@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { pool } from "../database.js";
-import { JWT_SECRET } from "../keys.js";
+import { pool } from "../../database.js";
+import { JWT_SECRET } from "../../keys.js";
 
 export const signIn = async (req, res) => {
   try {

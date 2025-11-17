@@ -1,13 +1,12 @@
-import { pool } from '../database.js'
-import { generateHash } from '../utils/hashes/index.js'
+import { pool } from '../../database.js'
+import { generateHash } from '../../utils/hashes/index.js'
 import jwt from 'jsonwebtoken'
-import { JWT_SECRET } from '../keys.js'
+import { JWT_SECRET } from '../../keys.js'
 
 export const createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Hash the password before storing
     const hashGenerated = await generateHash(password);
 
     const result = await pool.query(
