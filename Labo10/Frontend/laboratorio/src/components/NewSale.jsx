@@ -185,7 +185,7 @@ const NewSale = () => {
 
           {error && (
             <div className="error-message">
-              ⚠️ {error}
+              {error}
             </div>
           )}
         </form>
