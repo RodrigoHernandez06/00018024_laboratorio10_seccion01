@@ -1,17 +1,17 @@
-.sales-report-container {
+.sales-list-container {
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.report-header {
+.sales-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
 }
 
-.report-title {
+.sales-title {
   color: white;
   margin: 0;
 }
@@ -32,191 +32,91 @@
   background-color: #218838;
 }
 
-.summary-container {
+.stats-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-.summary-card {
+.stat-card {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  text-align: center;
 }
 
-.summary-icon {
-  font-size: 40px;
-}
-
-.summary-content {
-  flex: 1;
-}
-
-.summary-label {
+.stat-label {
   color: #6c757d;
-  font-size: 13px;
-  margin-bottom: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
-.summary-value {
+.stat-value {
   color: #007bff;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
 }
 
-.report-table-container {
+.sales-table-container {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   overflow: auto;
+  color: black;
 }
 
-.report-table {
+.sales-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.report-table thead tr {
+.sales-table thead tr {
   background-color: #007bff;
   color: white;
 }
 
-.report-table th {
+.sales-table th {
   padding: 15px;
   text-align: left;
   font-weight: bold;
   border-bottom: 2px solid #0056b3;
+  position: sticky;
+  top: 0;
 }
 
-.report-table th.sortable {
+.sales-table tbody tr {
+  transition: background-color 0.2s;
   cursor: pointer;
-  user-select: none;
-  transition: background-color 0.2s;
 }
 
-.report-table th.sortable:hover {
-  background-color: #0056b3;
-}
-
-.report-table tbody tr {
-  transition: background-color 0.2s;
-  color: black;
-}
-
-.report-table tbody tr:hover {
+.sales-table tbody tr:hover {
   background-color: #f8f9fa;
 }
 
-.report-table td {
+.sales-table td {
   padding: 12px 15px;
   border-bottom: 1px solid #e9ecef;
 }
 
-.ranking-cell {
-  text-align: center;
-  width: 80px;
-}
-
-.medal {
-  font-size: 24px;
-}
-
-.rank-number {
-  font-size: 18px;
+.sales-table .id-cell {
   font-weight: bold;
-  color: #6c757d;
+  color: #007bff;
 }
 
-.customer-cell {
-  min-width: 200px;
-}
-
-.customer-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.customer-name {
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.customer-id {
-  font-size: 12px;
-  color: black;
-}
-
-.amount-cell {
+.sales-table .amount-cell {
   font-weight: bold;
   color: #28a745;
   font-size: 16px;
 }
 
-.count-cell {
-  text-align: center;
+.sales-table .customer-cell {
+  font-weight: 500;
 }
 
-.badge {
-  background-color: #007bff;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-/* Barra de porcentaje */
-.percentage-bar {
-  position: relative;
-  background-color: #e9ecef;
-  height: 24px;
-  border-radius: 12px;
-  overflow: hidden;
-  min-width: 100px;
-}
-
-.percentage-fill {
-  background-color: #007bff;
-  height: 100%;
-  transition: width 0.3s;
-}
-
-.percentage-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-  font-size: 12px;
-  color: #333;
-}
-
-.report-table tfoot tr {
-  background-color: #f8f9fa;
-  font-weight: bold;
-}
-
-.tfoot-label {
-  padding: 15px;
-  border-top: 2px solid #dee2e6;
-  text-align: right;
-  font-size: 16px;
-}
-
-.tfoot-value {
-  padding: 15px;
-  border-top: 2px solid #dee2e6;
-  color: #007bff;
-  font-size: 16px;
-}
-
-.report-loading {
+.sales-list-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -240,7 +140,7 @@
   100% { transform: rotate(360deg); }
 }
 
-.report-error {
+.sales-list-error {
   background-color: #f8d7da;
   color: #721c24;
   padding: 20px;
@@ -266,7 +166,7 @@
   background-color: #c82333;
 }
 
-.report-empty-state {
+.empty-state {
   text-align: center;
   padding: 60px 20px;
   background-color: white;
@@ -279,27 +179,32 @@
   margin: 0 0 20px 0;
 }
 
-/* Responsive */
+.empty-hint {
+  color: #6c757d;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
 @media (max-width: 768px) {
-  .report-header {
+  .sales-header {
     flex-direction: column;
     gap: 15px;
   }
 
-  .summary-container {
+  .stats-container {
     grid-template-columns: 1fr;
   }
 
-  .report-table-container {
+  .sales-table-container {
     overflow-x: auto;
   }
 
-  .report-table {
+  .sales-table {
     font-size: 14px;
   }
 
-  .report-table th,
-  .report-table td {
+  .sales-table th,
+  .sales-table td {
     padding: 10px;
   }
 }

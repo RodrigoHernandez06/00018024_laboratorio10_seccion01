@@ -224,16 +224,6 @@ const SalesReport = () => {
               </tfoot>
             </table>
           </div>
-
-          <div className="info-box">
-            <h4 className="info-title">ℹ️ Información del Reporte</h4>
-            <ul className="info-list">
-              <li>Los clientes están ordenados por total de ventas (de mayor a menor)</li>
-              <li>Haz clic en los encabezados de columna para ordenar</li>
-              <li>El porcentaje muestra la contribución de cada cliente al total</li>
-              <li>Los tres mejores clientes están destacados con medallas</li>
-            </ul>
-          </div>
         </>
       )}
     </div>
