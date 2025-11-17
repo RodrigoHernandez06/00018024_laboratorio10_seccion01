@@ -55,7 +55,7 @@ const NewSale = () => {
         id_customer: parseInt(formData.id_customer)
       });
 
-      setMessage('✅ ¡Venta registrada exitosamente! ID: ' + response.data.sale.id);
+      setMessage('¡Venta registrada exitosamente! ID: ' + response.data.sale.id);
       setFormData({ amount: '', id_customer: '' });
       setLoading(false);
 
@@ -69,6 +69,17 @@ const NewSale = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
+    if (name === 'amount') {
+      if (value === '' || /^\d{0,}\.?\d{0,2}$/.test(value)) {
+        setFormData({
+          ...formData,
+          [name]: value
+        });
+      }
+      return;
+    }
+    
     setFormData({
       ...formData,
       [name]: value
@@ -130,9 +141,9 @@ const NewSale = () => {
             <div className="input-group">
               <span className="input-prefix">$</span>
               <input
-                type="number"
+                type="text"
                 name="amount"
-                step="0.01"
+                inputMode='decimal'
                 min="0.01"
                 value={formData.amount}
                 onChange={handleChange}
