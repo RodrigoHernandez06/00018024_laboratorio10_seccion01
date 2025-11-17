@@ -9,7 +9,7 @@ export const getSalesReport = async (req, res) => {
         SUM(s.amount) as total_sales,
         COUNT(s.id) as sales_count
       FROM customers c
-      LEFT JOIN sales s ON c.id = s.id_customer
+      JOIN sales s ON c.id = s.id_customer
       GROUP BY c.id, c.name
       ORDER BY total_sales DESC NULLS LAST
     `)
