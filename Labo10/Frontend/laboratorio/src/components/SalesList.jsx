@@ -15,6 +15,7 @@ const SalesList = () => {
   const fetchSales = async () => {
     try {
       setLoading(true);
+      setError('');
       const response = await API.get('/sales');
       setSales(response.data);
       
@@ -43,7 +44,7 @@ const SalesList = () => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'USD'
+      currency: 'USD',
     }).format(amount);
   };
 
@@ -59,7 +60,7 @@ const SalesList = () => {
   if (error) {
     return (
       <div className="sales-list-error">
-        <h3>⚠️ Error</h3>
+        <h3>Error</h3>
         <p>{error}</p>
         <button onClick={fetchSales} className="retry-btn">
           Reintentar
@@ -71,9 +72,9 @@ const SalesList = () => {
   return (
     <div className="sales-list-container">
       <div className="sales-header">
-        <h2 className="sales-title">🛒 Lista de Ventas</h2>
+        <h2 className="sales-title">Lista de Ventas</h2>
         <button onClick={fetchSales} className="refresh-btn">
-          🔄 Actualizar
+          Actualizar
         </button>
       </div>
 
@@ -96,7 +97,6 @@ const SalesList = () => {
 
       {sales.length === 0 ? (
         <div className="empty-state">
-          <p className="empty-icon">📭</p>
           <p>No hay ventas registradas</p>
           <p className="empty-hint">Las ventas aparecerán aquí una vez que sean registradas</p>
         </div>

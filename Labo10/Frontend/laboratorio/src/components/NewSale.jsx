@@ -18,6 +18,8 @@ const NewSale = () => {
   }, []);
 
   const fetchCustomers = async () => {
+    setLoadingCustomers(true);
+    setError('');
     try {
       const response = await API.get('/customers');
       setCustomers(response.data);
@@ -48,15 +50,15 @@ const NewSale = () => {
     }
 
     try {
-      const response = await API.post('/api/sales', {
+      const response = await API.post('/sales', {
         amount: parseFloat(formData.amount),
         id_customer: parseInt(formData.id_customer)
       });
-      
+
       setMessage('✅ ¡Venta registrada exitosamente! ID: ' + response.data.sale.id);
       setFormData({ amount: '', id_customer: '' });
       setLoading(false);
-      
+
       setTimeout(() => setMessage(''), 5000);
     } catch (err) {
       setError(err.response?.data?.message || 'Error al registrar la venta');
@@ -92,8 +94,8 @@ const NewSale = () => {
   return (
     <div className="sale-form-container">
       <div className="sale-form-card">
-        <h2 className="sale-form-title">💰 Registrar Nueva Venta</h2>
-        
+        <h2 className="sale-form-title">Registrar Nueva Venta</h2>
+
         <form onSubmit={handleSubmit} className="sale-form">
           <div className="form-group">
             <label className="form-label">
@@ -151,16 +153,16 @@ const NewSale = () => {
               className={`form-button primary ${loading ? 'disabled' : ''}`}
               disabled={loading || customers.length === 0}
             >
-              {loading ? '⏳ Procesando...' : '💾 Registrar Venta'}
+              {loading ? 'Procesando...' : 'Registrar Venta'}
             </button>
-            
+
             <button
               type="button"
               onClick={handleReset}
               className="form-button secondary"
               disabled={loading}
             >
-              🔄 Limpiar
+              Limpiar
             </button>
           </div>
 
@@ -169,7 +171,7 @@ const NewSale = () => {
               {message}
             </div>
           )}
-          
+
           {error && (
             <div className="error-message">
               ⚠️ {error}

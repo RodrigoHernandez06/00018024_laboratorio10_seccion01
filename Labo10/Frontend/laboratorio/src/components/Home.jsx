@@ -5,7 +5,7 @@ import "../styles/Home.css";
 const Home = () => {
   return (
     <div className="home-container">
-      <h2 className="home-title">🏠 Bienvenido al Sistema de Gestión de Ventas</h2>
+      <h2 className="home-title">Bienvenido al Sistema de Gestión de Ventas</h2>
       <p className="home-subtitle">Seleccione una opción del menú superior para comenzar</p>
 
       <div className="cards-container">

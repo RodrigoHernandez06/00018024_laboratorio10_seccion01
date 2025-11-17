@@ -44,7 +44,7 @@ const SearchCustomers = () => {
   return (
     <div className="search-customers-container">
       <div className="search-card">
-        <h2 className="search-title">🔍 Buscar Cliente por Código</h2>
+        <h2 className="search-title">Buscar Cliente por Código</h2>
         
         <form onSubmit={handleSearch} className="search-form">
           <div className="search-input-group">
@@ -61,7 +61,7 @@ const SearchCustomers = () => {
               className={`search-button primary ${loading ? 'disabled' : ''}`}
               disabled={loading}
             >
-              {loading ? '⏳ Buscando...' : '🔍 Buscar'}
+              {loading ? 'Buscando...' : 'Buscar'}
             </button>
             {(code || searched) && (
               <button
@@ -70,7 +70,7 @@ const SearchCustomers = () => {
                 className="search-button secondary"
                 disabled={loading}
               >
-                🔄 Limpiar
+                Limpiar
               </button>
             )}
           </div>
@@ -78,7 +78,7 @@ const SearchCustomers = () => {
 
         {error && (
           <div className="search-error-message">
-            ⚠️ {error}
+            {error}
           </div>
         )}
 
@@ -95,7 +95,7 @@ const SearchCustomers = () => {
           <>
             <div className="results-header">
               <h3 className="results-title">
-                ✅ {customers.length} resultado{customers.length > 1 ? 's' : ''} encontrado{customers.length > 1 ? 's' : ''}
+                {customers.length} resultado{customers.length > 1 ? 's' : ''} encontrado{customers.length > 1 ? 's' : ''}
               </h3>
             </div>
 
@@ -108,15 +108,15 @@ const SearchCustomers = () => {
                   </div>
                   
                   <div className="card-body">
-                    <h3 className="customer-name">👤 {customer.name}</h3>
+                    <h3 className="customer-name">{customer.name}</h3>
                     
                     <div className="info-row">
-                      <span className="info-label">📍 Dirección:</span>
+                      <span className="info-label">Dirección:</span>
                       <span className="info-value">{customer.address || 'No registrada'}</span>
                     </div>
                     
                     <div className="info-row">
-                      <span className="info-label">📞 Teléfono:</span>
+                      <span className="info-label">Teléfono:</span>
                       <span className="info-value">{customer.phone || 'No registrado'}</span>
                     </div>
                   </div>

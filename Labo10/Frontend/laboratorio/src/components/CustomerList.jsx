@@ -12,6 +12,8 @@ const CustomerList = () => {
   }, []);
 
   const fetchCustomers = async () => {
+    setLoading(true);
+    setError('');
     try {
       const response = await API.get('/customers');
       setCustomers(response.data);
@@ -47,9 +49,9 @@ const CustomerList = () => {
   return (
     <div className="customer-list-container">
       <div className="header">
-        <h2 className="title">📋 Lista de Clientes</h2>
+        <h2 className="title">Lista de Clientes</h2>
         <button onClick={fetchCustomers} className="refresh-button">
-          🔄 Actualizar
+          Actualizar
         </button>
       </div>
 

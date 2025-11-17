@@ -13,8 +13,9 @@ const SalesReport = () => {
   }, []);
 
   const fetchReport = async () => {
+    setLoading(true);
+    setError('');
     try {
-      setLoading(true);
       const response = await API.get('/sales/report');
       setReport(response.data);
       setLoading(false);
@@ -42,8 +43,14 @@ const SalesReport = () => {
 
   const getSortedReport = () => {
     const sortedData = [...report].sort((a, b) => {
-      const aValue = a[sortConfig.key] || 0;
-      const bValue = b[sortConfig.key] || 0;
+      let aValue = a[sortConfig.key] || 0;
+      let bValue = b[sortConfig.key] || 0;
+
+      // Convert to numbers for numeric fields
+      if (sortConfig.key === 'total_sales' || sortConfig.key === 'sales_count') {
+        aValue = parseFloat(aValue);
+        bValue = parseFloat(bValue);
+      }
 
       if (sortConfig.direction === 'asc') {
         return aValue > bValue ? 1 : -1;
@@ -77,7 +84,7 @@ const SalesReport = () => {
   if (error) {
     return (
       <div className="report-error">
-        <h3>⚠️ Error</h3>
+        <h3>Error</h3>
         <p>{error}</p>
         <button onClick={fetchReport} className="retry-btn">
           Reintentar
@@ -92,15 +99,14 @@ const SalesReport = () => {
   return (
     <div className="sales-report-container">
       <div className="report-header">
-        <h2 className="report-title">📊 Reporte de Ventas por Cliente</h2>
+        <h2 className="report-title">Reporte de Ventas por Cliente</h2>
         <button onClick={fetchReport} className="refresh-btn">
-          🔄 Actualizar
+          Actualizar
         </button>
       </div>
 
       <div className="summary-container">
         <div className="summary-card">
-          <div className="summary-icon">👥</div>
           <div className="summary-content">
             <div className="summary-label">Total Clientes</div>
             <div className="summary-value">{report.length}</div>
@@ -108,7 +114,6 @@ const SalesReport = () => {
         </div>
 
         <div className="summary-card">
-          <div className="summary-icon">💰</div>
           <div className="summary-content">
             <div className="summary-label">Ventas Totales</div>
             <div className="summary-value">{formatCurrency(totals.totalSales)}</div>
@@ -116,7 +121,6 @@ const SalesReport = () => {
         </div>
 
         <div className="summary-card">
-          <div className="summary-icon">📦</div>
           <div className="summary-content">
             <div className="summary-label">Total Transacciones</div>
             <div className="summary-value">{totals.totalCount}</div>
@@ -124,7 +128,6 @@ const SalesReport = () => {
         </div>
 
         <div className="summary-card">
-          <div className="summary-icon">📈</div>
           <div className="summary-content">
             <div className="summary-label">Promedio por Cliente</div>
             <div className="summary-value">
@@ -136,7 +139,6 @@ const SalesReport = () => {
 
       {report.length === 0 ? (
         <div className="report-empty-state">
-          <p className="empty-icon">📊</p>
           <h3>No hay datos para mostrar</h3>
           <p>No hay clientes con ventas registradas</p>
         </div>
@@ -162,7 +164,7 @@ const SalesReport = () => {
               </thead>
               <tbody>
                 {sortedReport.map((item, index) => {
-                  const avgPerSale = item.sales_count > 0 
+                  const avgPerSale = item.sales_count > 0
                     ? parseFloat(item.total_sales) / parseInt(item.sales_count)
                     : 0;
                   const percentage = totals.totalSales > 0
@@ -172,13 +174,7 @@ const SalesReport = () => {
                   return (
                     <tr key={item.customer_id}>
                       <td className="ranking-cell">
-                        {index < 3 ? (
-                          <span className="medal">
-                            {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
-                          </span>
-                        ) : (
-                          <span className="rank-number">{index + 1}</span>
-                        )}
+                        <span className="rank-number">{index + 1}</span>
                       </td>
                       <td className="customer-cell">
                         <div className="customer-info">
@@ -197,7 +193,7 @@ const SalesReport = () => {
                       </td>
                       <td>
                         <div className="percentage-bar">
-                          <div 
+                          <div
                             className="percentage-fill"
                             style={{ width: `${percentage}%` }}
                           ></div>
@@ -214,7 +210,7 @@ const SalesReport = () => {
                   <td className="tfoot-value">{formatCurrency(totals.totalSales)}</td>
                   <td className="tfoot-value">{totals.totalCount}</td>
                   <td className="tfoot-value">
-                    {totals.totalCount > 0 
+                    {totals.totalCount > 0
                       ? formatCurrency(totals.totalSales / totals.totalCount)
                       : '$0.00'
                     }
