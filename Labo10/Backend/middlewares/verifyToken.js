@@ -1,7 +1,5 @@
-// middlewares/verifyToken.js
 import jwt from 'jsonwebtoken'
-
-const JWT_SECRET = 'your_jwt_secret'
+import { JWT_SECRET } from '../keys.js'
 
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization

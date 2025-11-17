@@ -1,0 +1,156 @@
+.login-container {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.login-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 40px 30px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-icon {
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
+.login-title {
+  color: #333;
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+.login-subtitle {
+  color: #6c757d;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-label {
+  font-weight: bold;
+  color: #495057;
+  font-size: 14px;
+}
+
+.login-input {
+  padding: 14px;
+  border: 2px solid #ced4da;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.login-button {
+  padding: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.1s;
+  margin-top: 10px;
+}
+
+.login-button-disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.login-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #f5c6cb;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-info-box {
+  background-color: #e7f3ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 25px;
+  border: 1px solid #b3d9ff;
+}
+
+.login-info-title {
+  margin-bottom: 10px;
+  color: #004085;
+  font-size: 16px;
+}
+
+.login-info-text {
+  margin-bottom: 15px;
+  color: #004085;
+  font-size: 14px;
+}
+
+.login-test-credentials {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #b3d9ff;
+}
+
+.login-credentials-title {
+  font-weight: bold;
+  color: #004085;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.login-credentials-text {
+  color: #004085;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.login-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.login-feature {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.feature-text {
+  margin: 0;
+  color: #495057;
+  font-size: 12px;
+  font-weight: 500;
+}
